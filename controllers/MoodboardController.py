@@ -1,7 +1,5 @@
 from flask import Blueprint, request
-from services.MoodboardService import create_moodboard, save_moodboard
-from machine_learning.ml_model_functions import predict_multiple, load_model, prediction
-from utils.ImageUtil import get_all_images_from_directory
+from services.MoodboardService import create_moodboard, save_moodboard, cancel
 
 moodboard_controller = Blueprint('moodboard_controller', __name__)
 
@@ -42,3 +40,12 @@ def save():
             print("Please provide at least one image url in an array! (e.g. [\"url\"])")
     else:
         return 'Content-Type not supported!'
+
+
+@moodboard_controller.route("/cancel", methods=["GET"])
+def cancel_creation():
+    """
+    This endpoint cancels the training of the model.
+    """
+    cancel()
+    return "Creation cancelled!"
