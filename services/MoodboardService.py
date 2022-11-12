@@ -16,6 +16,8 @@ def create_moodboard(keywords: [str], quantity=15) -> [str]:
     :param quantity: Amount of images generated.
     :return: List of image URLs.
     """
+    cancel()
+
     images = fetch_images(keywords, quantity)
     local_images = get_all_images_from_directory("./temp")
     preferences = predict_multiple(local_images)
