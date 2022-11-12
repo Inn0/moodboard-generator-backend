@@ -1,0 +1,6 @@
+.idea
+.env
+temp
+*/__pycache__
+/data
+ml_models
